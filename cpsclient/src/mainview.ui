@@ -1,0 +1,552 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainviewClass</class>
+ <widget class="QMainWindow" name="MainviewClass">
+  <property name="enabled">
+   <bool>true</bool>
+  </property>
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>CPS Client</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="../mainview.qrc">
+    <normaloff>:/new/prefix1/images/ueye_logo.png</normaloff>:/new/prefix1/images/ueye_logo.png</iconset>
+  </property>
+  <property name="autoFillBackground">
+   <bool>false</bool>
+  </property>
+  <property name="toolButtonStyle">
+   <enum>Qt::ToolButtonIconOnly</enum>
+  </property>
+  <widget class="QWidget" name="centralwidget"/>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>28</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menu_File">
+    <property name="title">
+     <string>&amp;File</string>
+    </property>
+    <widget class="QMenu" name="menuLoad_parameter">
+     <property name="title">
+      <string>&amp;load parameter</string>
+     </property>
+     <addaction name="actionLoadParamsFromFile"/>
+     <addaction name="actionLoadParameterSet"/>
+    </widget>
+    <widget class="QMenu" name="menuSave_parameter">
+     <property name="title">
+      <string>&amp;save parameter</string>
+     </property>
+     <addaction name="actionSaveParameterToFile"/>
+     <addaction name="actionSaveParameterSet"/>
+    </widget>
+    <addaction name="menuLoad_parameter"/>
+    <addaction name="menuSave_parameter"/>
+    <addaction name="separator"/>
+    <addaction name="actionSave_image"/>
+    <addaction name="actionLoad_image"/>
+    <addaction name="separator"/>
+    <addaction name="actionExit"/>
+   </widget>
+   <widget class="QMenu" name="menu">
+    <property name="title">
+     <string>Help</string>
+    </property>
+    <addaction name="actionAbout"/>
+    <addaction name="separator"/>
+   </widget>
+   <widget class="QMenu" name="menuView">
+    <property name="title">
+     <string>&amp;View</string>
+    </property>
+    <addaction name="actionDisplay"/>
+    <addaction name="separator"/>
+    <addaction name="actionView_Fit"/>
+    <addaction name="actionOriginal_size"/>
+    <addaction name="actionHalf_size"/>
+    <addaction name="actionQuarter_size"/>
+    <addaction name="actionDouble_size"/>
+    <addaction name="separator"/>
+    <addaction name="action"/>
+    <addaction name="separator"/>
+    <addaction name="actionHistogram"/>
+    <addaction name="actionImageinfo"/>
+   </widget>
+   <addaction name="menu_File"/>
+   <addaction name="menuView"/>
+   <addaction name="menu"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <widget class="QToolBar" name="toolBar_display">
+   <property name="windowTitle">
+    <string>toolBar_2</string>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="actionDisplay"/>
+   <addaction name="actionView_Fit"/>
+   <addaction name="actionOriginal_size"/>
+   <addaction name="actionHalf_size"/>
+   <addaction name="actionQuarter_size"/>
+   <addaction name="actionDouble_size"/>
+  </widget>
+  <widget class="QToolBar" name="toolBar">
+   <property name="windowTitle">
+    <string>toolBar</string>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+   <addaction name="actionOpenCamera"/>
+   <addaction name="actionOpenCameraStop"/>
+   <addaction name="actionCloseCamera"/>
+   <addaction name="separator"/>
+   <addaction name="actionSave_image"/>
+   <addaction name="actionLoad_image"/>
+   <addaction name="actionProperties"/>
+   <addaction name="actionImageinfo"/>
+  </widget>
+  <widget class="QDockWidget" name="dockWidget">
+   <property name="acceptDrops">
+    <bool>true</bool>
+   </property>
+   <property name="toolTip">
+    <string>Task List</string>
+   </property>
+   <property name="autoFillBackground">
+    <bool>true</bool>
+   </property>
+   <property name="windowTitle">
+    <string>Task List</string>
+   </property>
+   <attribute name="dockWidgetArea">
+    <number>1</number>
+   </attribute>
+   <widget class="QWidget" name="dockWidgetContents"/>
+  </widget>
+  <widget class="QDockWidget" name="dockWidget_2">
+   <property name="acceptDrops">
+    <bool>true</bool>
+   </property>
+   <property name="windowIcon">
+    <iconset>
+     <normaloff>../images/ids_logo.png</normaloff>../images/ids_logo.png</iconset>
+   </property>
+   <property name="toolTip">
+    <string>Sensor Status</string>
+   </property>
+   <property name="windowTitle">
+    <string>Sensor Status</string>
+   </property>
+   <attribute name="dockWidgetArea">
+    <number>1</number>
+   </attribute>
+   <widget class="QWidget" name="dockWidgetContents_2"/>
+  </widget>
+  <action name="actionOpenCamera">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="../mainview.qrc">
+     <normaloff>:/new/prefix1/images/openplay.png</normaloff>:/new/prefix1/images/openplay.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;open camera live</string>
+   </property>
+   <property name="toolTip">
+    <string>open a uEye and start live</string>
+   </property>
+   <property name="statusTip">
+    <string>open a uEye</string>
+   </property>
+  </action>
+  <action name="actionCloseCamera">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="../mainview.qrc">
+     <normaloff>:/new/prefix1/images/camclose.png</normaloff>:/new/prefix1/images/camclose.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;close camera</string>
+   </property>
+   <property name="toolTip">
+    <string>close a uEye</string>
+   </property>
+   <property name="statusTip">
+    <string>close a uEye</string>
+   </property>
+  </action>
+  <action name="actionSave_image">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="../mainview.qrc">
+     <normaloff>:/new/prefix1/images/save.png</normaloff>:/new/prefix1/images/save.png</iconset>
+   </property>
+   <property name="text">
+    <string>save &amp;image</string>
+   </property>
+  </action>
+  <action name="actionAbout">
+   <property name="icon">
+    <iconset resource="../mainview.qrc">
+     <normaloff>:/new/prefix1/images/info.png</normaloff>:/new/prefix1/images/info.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;about cps Demo</string>
+   </property>
+  </action>
+  <action name="actionExit">
+   <property name="icon">
+    <iconset resource="../mainview.qrc">
+     <normaloff>:/new/prefix1/images/exit.png</normaloff>:/new/prefix1/images/exit.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;exit</string>
+   </property>
+   <property name="toolTip">
+    <string>close the client</string>
+   </property>
+   <property name="statusTip">
+    <string>close the client</string>
+   </property>
+   <property name="shortcut">
+    <string>Alt+Q</string>
+   </property>
+  </action>
+  <action name="actionSnapshot">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="../mainview.qrc">
+     <normaloff>:/new/prefix1/images/media_pause.png</normaloff>:/new/prefix1/images/media_pause.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Snapshot</string>
+   </property>
+   <property name="shortcut">
+    <string>Alt+S</string>
+   </property>
+  </action>
+  <action name="actionLive">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="../mainview.qrc">
+     <normaloff>:/new/prefix1/images/media_play.png</normaloff>:/new/prefix1/images/media_play.png</iconset>
+   </property>
+   <property name="text">
+    <string>Start &amp;live</string>
+   </property>
+   <property name="toolTip">
+    <string>Start/Stop live capture</string>
+   </property>
+   <property name="shortcut">
+    <string>Alt+L</string>
+   </property>
+  </action>
+  <action name="actionMonochrome">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>monochrome</string>
+   </property>
+  </action>
+  <action name="actionColor">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>color</string>
+   </property>
+  </action>
+  <action name="actionDisplay">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="../mainview.qrc">
+     <normaloff>:/new/prefix2/images/display_no.png</normaloff>:/new/prefix2/images/display_no.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;no display</string>
+   </property>
+  </action>
+  <action name="actionProperties">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="../mainview.qrc">
+     <normaloff>:/new/prefix1/images/properties.png</normaloff>:/new/prefix1/images/properties.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Properties</string>
+   </property>
+  </action>
+  <action name="actionView_Fit">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="../mainview.qrc">
+     <normaloff>:/new/prefix2/images/display_fit.png</normaloff>:/new/prefix2/images/display_fit.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;fit to window</string>
+   </property>
+  </action>
+  <action name="actionTrigger">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>&amp;use HW trigger</string>
+   </property>
+  </action>
+  <action name="actionOriginal_size">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="../mainview.qrc">
+     <normaloff>:/new/prefix2/images/display_1-1.png</normaloff>:/new/prefix2/images/display_1-1.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;original size</string>
+   </property>
+  </action>
+  <action name="actionHalf_size">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="../mainview.qrc">
+     <normaloff>:/new/prefix2/images/display_1-2.png</normaloff>:/new/prefix2/images/display_1-2.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;half size</string>
+   </property>
+  </action>
+  <action name="actionQuarter_size">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="../mainview.qrc">
+     <normaloff>:/new/prefix2/images/display_1-4.png</normaloff>:/new/prefix2/images/display_1-4.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;quarter size</string>
+   </property>
+  </action>
+  <action name="actionDouble_size">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="../mainview.qrc">
+     <normaloff>:/new/prefix2/images/display_2-1.png</normaloff>:/new/prefix2/images/display_2-1.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;double size</string>
+   </property>
+  </action>
+  <action name="actionForceCameralist">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>&amp;force cameralist</string>
+   </property>
+  </action>
+  <action name="actionUseErrorReport">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>use API &amp;error report</string>
+   </property>
+   <property name="toolTip">
+    <string>api error report</string>
+   </property>
+  </action>
+  <action name="actionImageinfo">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="../mainview.qrc">
+     <normaloff>:/new/prefix1/images/imageplus.png</normaloff>:/new/prefix1/images/imageplus.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;Imageinfo</string>
+   </property>
+   <property name="toolTip">
+    <string>show/hide additional image infos</string>
+   </property>
+  </action>
+  <action name="actionOpenCameraStop">
+   <property name="icon">
+    <iconset resource="../mainview.qrc">
+     <normaloff>:/new/prefix1/images/openstop.png</normaloff>:/new/prefix1/images/openstop.png</iconset>
+   </property>
+   <property name="text">
+    <string>ope&amp;n camera stop</string>
+   </property>
+   <property name="toolTip">
+    <string>open a uEye stopped</string>
+   </property>
+  </action>
+  <action name="action">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="../mainview.qrc">
+     <normaloff>:/new/prefix1/images/display_rate_limit.png</normaloff>:/new/prefix1/images/display_rate_limit.png</iconset>
+   </property>
+   <property name="text">
+    <string>&amp;limit display rate</string>
+   </property>
+  </action>
+  <action name="actionResetCamera">
+   <property name="text">
+    <string>&amp;Reset to defaults</string>
+   </property>
+   <property name="toolTip">
+    <string>resets the camera to its default parameters</string>
+   </property>
+  </action>
+  <action name="actionLoadParamsFromFile">
+   <property name="text">
+    <string>&amp;from file...</string>
+   </property>
+   <property name="toolTip">
+    <string>load camera parameter from a configuration file</string>
+   </property>
+  </action>
+  <action name="actionLoadParameterSet">
+   <property name="text">
+    <string>&amp;Parameter set</string>
+   </property>
+   <property name="toolTip">
+    <string>load camera parameter from camera set 1</string>
+   </property>
+  </action>
+  <action name="actionLoadParameterSet2">
+   <property name="text">
+    <string>Parameter set 2</string>
+   </property>
+   <property name="toolTip">
+    <string>load camera parameter from camera set 2</string>
+   </property>
+  </action>
+  <action name="actionSaveParameterToFile">
+   <property name="text">
+    <string>&amp;to file...</string>
+   </property>
+   <property name="toolTip">
+    <string>save camera parameter to camera configuration file</string>
+   </property>
+  </action>
+  <action name="actionSaveParameterSet">
+   <property name="text">
+    <string>&amp;Parameter set</string>
+   </property>
+   <property name="toolTip">
+    <string>save camera parameter to camera set 1</string>
+   </property>
+  </action>
+  <action name="actionSaveParameterSet2">
+   <property name="text">
+    <string>Parameter set 2</string>
+   </property>
+   <property name="toolTip">
+    <string>save camera parameter to camera set 2</string>
+   </property>
+  </action>
+  <action name="actionLoad_image">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="../mainview.qrc">
+     <normaloff>:/new/prefix1/images/load_image.png</normaloff>:/new/prefix1/images/load_image.png</iconset>
+   </property>
+   <property name="text">
+    <string>l&amp;oad image</string>
+   </property>
+  </action>
+  <action name="actionHistogram">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Histogram</string>
+   </property>
+   <property name="toolTip">
+    <string>Histogram</string>
+   </property>
+  </action>
+ </widget>
+ <resources>
+  <include location="../mainview.qrc"/>
+ </resources>
+ <connections/>
+</ui>

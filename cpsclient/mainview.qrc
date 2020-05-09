@@ -1,0 +1,29 @@
+<RCC>
+    <qresource prefix="/new/prefix1">
+        <file>images/uEye.png</file>
+        <file>images/camclose.png</file>
+        <file>images/openplay.png</file>
+        <file>images/openstop.png</file>
+        <file>images/media_pause.png</file>
+        <file>images/media_play.png</file>
+        <file>images/media_stop.png</file>
+        <file>images/info.png</file>
+        <file>images/properties.png</file>
+        <file>images/imageplus.png</file>
+        <file>images/save.png</file>
+        <file>images/display_rate_limit.png</file>
+        <file>images/exit.png</file>
+        <file>images/ueye_logo.png</file>
+        <file>images/ueye_background_logo.png</file>
+        <file>images/ids_logo.png</file>
+        <file>images/load_image.png</file>
+    </qresource>
+    <qresource prefix="/new/prefix2">
+        <file>images/display_1-1.png</file>
+        <file>images/display_1-2.png</file>
+        <file>images/display_1-4.png</file>
+        <file>images/display_2-1.png</file>
+        <file>images/display_fit.png</file>
+        <file>images/display_no.png</file>
+    </qresource>
+</RCC>
